@@ -1,0 +1,5 @@
+{
+  "name": "VTK Unstructured Grid Viewer",
+  "description": "A robust Three.js viewer for ASCII VTK Unstructured Grid files, featuring a custom loader, wireframe toggles, and interactive 3D visualization.",
+  "requestFramePermissions": []
+}
