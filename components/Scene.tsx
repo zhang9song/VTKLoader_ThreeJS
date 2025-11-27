@@ -4,6 +4,20 @@ import { useThree } from '@react-three/fiber';
 import { Center, OrbitControls } from '@react-three/drei';
 import { ViewerSettings } from '../types';
 
+// Fix: Augment JSX namespace to resolve missing intrinsic elements in this environment
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      ambientLight: any;
+      directionalLight: any;
+      group: any;
+      mesh: any;
+      meshStandardMaterial: any;
+      gridHelper: any;
+    }
+  }
+}
+
 interface SceneProps {
   geometry: THREE.BufferGeometry | null;
   settings: ViewerSettings;

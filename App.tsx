@@ -138,9 +138,9 @@ const App: React.FC = () => {
               loader = new VTKUnstructuredLoader();
           }
 
-          // Both loaders support .parse(string) returning BufferGeometry
-          // @ts-ignore - loader types are compatible enough for this use case
-          const geo = loader.parse(event.target.result as string);
+          // Both loaders support .parse(ArrayBuffer)
+          // @ts-ignore
+          const geo = loader.parse(event.target.result as ArrayBuffer);
           
           // Safety check for empty geometry
           if (!geo || !geo.attributes.position || geo.attributes.position.count === 0) {
@@ -186,7 +186,7 @@ const App: React.FC = () => {
       }
     };
 
-    reader.readAsText(file);
+    reader.readAsArrayBuffer(file);
   };
 
   return (
@@ -205,7 +205,7 @@ const App: React.FC = () => {
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-slate-500">
            <div className="w-96 text-center space-y-4">
                <p className="text-2xl font-light">No Model Loaded</p>
-               <p className="text-sm opacity-70">Upload an ASCII .vtk or .vtu file.</p>
+               <p className="text-sm opacity-70">Upload an ASCII/Binary .vtk or .vtu file.</p>
            </div>
         </div>
       )}
